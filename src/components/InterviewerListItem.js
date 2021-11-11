@@ -10,7 +10,6 @@ export default function InterviewerListItem(props) {
     "interviewers__item--selected": selected, 
   });
 
-  
   return(
     <li className={interviewerClass} onClick={() => setInterviewer(id)}>
       <img
