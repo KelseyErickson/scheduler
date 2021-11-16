@@ -1,6 +1,4 @@
-
-
- export function getAppointmentsForDay(state, day) {
+  export function getAppointmentsForDay(state, day) {
   let appointmentsForDay = [];
 
   if(!state.days.length) {
