@@ -25,6 +25,22 @@ export default function Application(props) {
     });
   }, []);
 
+  function bookInterview(id, interview) {
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    setState({...state, appointments});
+    
+    
+  }
+  
   const interviewersArray = getInterviewersForDay(state, state.day);
   const appointments = getAppointmentsForDay(state, state.day);
   
@@ -37,6 +53,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewersArray}
+        bookInterview={bookInterview}
       />
     );
   });
@@ -69,3 +86,4 @@ export default function Application(props) {
     </main>
   );
 }
+
