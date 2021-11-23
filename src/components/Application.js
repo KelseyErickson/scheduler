@@ -57,12 +57,10 @@ export default function Application(props) {
       [id]: appointment
     };
    
-  
     return axios.delete(`/api/appointments/${id}`)
      .then(() => {
         setState({...state, appointments})})
      .catch(err => console.log(err.response))
-
   }
   
   const interviewersArray = getInterviewersForDay(state, state.day);
@@ -111,4 +109,3 @@ export default function Application(props) {
     </main>
   );
 }
-
