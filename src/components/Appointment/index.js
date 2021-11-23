@@ -4,24 +4,32 @@ import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
+import Status from "./Status";
 import useVisualMode from "hooks/useVisualMode";
 
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
-  const CREATE = "CREATE" ;
+  const CREATE = "CREATE";
+  const SAVING = "SAVING";
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-  console.log(props)
 
   function save(name, interviewer) {
     const interview = {
       student: name,
       interviewer
     };
-    props.bookInterview(props.id, interview);
-    transition(SHOW)
+
+    transition(SAVING)
+    
+    props.bookInterview(props.id, interview)
+     .then(() => { // why do I need an if here?
+       if(interview.student){
+         transition(SHOW)
+       }
+     })
   }
 
   return (
@@ -35,6 +43,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back(EMPTY)} onSave={save}/>}
+      {mode === SAVING && <Status/>}
     </article>
   );
 }
