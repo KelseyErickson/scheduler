@@ -41,8 +41,6 @@ export default function Application(props) {
      .then(() => {
        setState({...state, appointments})
      })
-     .catch(err => console.log(err.response))
-
   }
 
   function cancelInterview(id) {
@@ -60,7 +58,6 @@ export default function Application(props) {
     return axios.delete(`/api/appointments/${id}`)
      .then(() => {
         setState({...state, appointments})})
-     .catch(err => console.log(err.response))
   }
   
   const interviewersArray = getInterviewersForDay(state, state.day);
