@@ -38,6 +38,7 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
+    // To decrement spots when appointment added
     const days = state.days.map((d) => {
       if (d.name === state.day) {
         return { ...d, spots: d.spots - 1 };
@@ -63,6 +64,7 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
+    // To increment spots with interview deleted
     const days = state.days.map((d) => {
       if (d.name === state.day) {
         return { ...d, spots: d.spots + 1 };
