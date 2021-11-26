@@ -9,7 +9,9 @@ Tested and developed with Jest and Storybook
 ## Final Product
 
 !["Scheduler Main Page"](https://github.com/KelseyErickson/scheduler/blob/master/docs/scheduler-main-page.png?raw=true)
+
 !["Scheduler Add Appointment"](https://github.com/KelseyErickson/scheduler/blob/master/docs/scheduler-add-appointment.png?raw=true)
+
 !["Scheduler Delete Appointment"](https://github.com/KelseyErickson/scheduler/blob/master/docs/scheduler-delete-interview.png?raw=true)
 
 ## Dependencies
