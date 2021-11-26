@@ -11,14 +11,14 @@ export function getAppointmentsForDay(state, day) {
   if (!filteredDays.length) {
     return [];
   }
-  // Place the appointments array for the filtered day in a variable
+ 
   const appointmentArray = filteredDays[0].appointments;
   
-  for (const appointment of appointmentArray) {
-  //Push state.appointments objects to the appointmentsForDay array
+  // Push state.appointments objects to the appointmentsForDay array
+  appointmentArray.forEach(appointment => {
     appointmentsForDay.push(state.appointments[appointment]);
-  }
-
+  });
+ 
   return appointmentsForDay;
 };
 
@@ -39,9 +39,9 @@ export function getInterviewersForDay(state, day) {
  
   const interviewerArray = filteredDays[0].interviewers;
   
-  for (const interviewer of interviewerArray) {
+  interviewerArray.forEach(interviewer => {
     interviewersForDay.push(state.interviewers[interviewer]);
-  }
+  });
   
   return interviewersForDay;
 };
