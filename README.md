@@ -4,6 +4,8 @@ Scheduler is a single paged application made with React for students to book app
 
 A student can enter their name and select their prefered mentor at an available time during the week. Appointments can be edited and deleted. 
 
+Tested and developed with Jest and Storybook
+
 ## Final Product
 
 !["Scheduler Main Page"](https://github.com/KelseyErickson/scheduler/blob/master/docs/scheduler-main-page.png?raw=true)
