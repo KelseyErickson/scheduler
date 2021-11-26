@@ -37,7 +37,7 @@ export default function Appointment(props) {
     };
 
     transition(SAVING);
-    // Transitions depending on whether bookInterview axious request successful
+    // Transitions depending on whether bookInterview axios request successful
     props.bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch((error) => transition(ERROR_SAVE, true));
@@ -46,7 +46,7 @@ export default function Appointment(props) {
   // Function to delete an appointment 
   function deleteAppointment() {
     transition(DELETING, true);
-  // Transitions depending on whether cancelInterview axious request successful
+  // Transitions depending on whether cancelInterview axios request successful
     props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch((error) => transition(ERROR_DELETE, true));
