@@ -22,7 +22,5 @@ export default function InterviewerList(props) {
         {interviewersArray}
       </ul>
     </section>
-
-
   );
-}
+};

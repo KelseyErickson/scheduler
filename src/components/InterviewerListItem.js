@@ -20,4 +20,4 @@ export default function InterviewerListItem(props) {
       {selected && name}
     </li>
     );
-}
+};
