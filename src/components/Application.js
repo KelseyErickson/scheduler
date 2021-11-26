@@ -7,10 +7,10 @@ import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
   const { 
-    state, 
-    setDay, 
-    bookInterview, 
-    cancelInterview 
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
   } = useApplicationData();
 
   const appointments = getAppointmentsForDay(state, state.day);
@@ -53,4 +53,4 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
+};
