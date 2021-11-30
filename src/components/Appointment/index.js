@@ -19,7 +19,6 @@ export default function Appointment(props) {
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
-  const ERROR_INCOMPLETE = "ERROR_INCOMPLETE";
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -28,10 +27,6 @@ export default function Appointment(props) {
   //Function to save student name in interviewer when making new appointment
   function save(name, interviewer) {
     // Check to see if inteviewer or name is entered on form, if not show error and do not save
-    if(!interviewer || !name){
-      return transition(ERROR_INCOMPLETE);
-    }
-
     const interview = {
       student: name,
       interviewer,
@@ -96,12 +91,6 @@ export default function Appointment(props) {
       {mode === ERROR_DELETE && (
         <Error
           message={"Could not delete appointment."}
-          onClose={() => back()}
-        />
-      )}
-      {mode === ERROR_INCOMPLETE && (
-        <Error
-          message={"You must enter a student name and select an interviewer to make an appointment."}
           onClose={() => back()}
         />
       )}
