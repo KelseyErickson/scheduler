@@ -1,49 +1,31 @@
-// Function to take in state and day and return the appointments for that day as an array of objects
 export function getAppointmentsForDay(state, day) {
-  let appointmentsForDay = [];
-
-  if (!state.days.length) {
-    return [];
-  }
-  // Filter selected day from state.days array
-  const filteredDays = state.days.filter((stateDay) => stateDay.name === day);
-  
-  if (!filteredDays.length) {
-    return [];
-  }
- 
-  const appointmentArray = filteredDays[0].appointments;
-  
-  // Push state.appointments objects to the appointmentsForDay array
-  appointmentArray.forEach(appointment => {
-    appointmentsForDay.push(state.appointments[appointment]);
-  });
- 
-  return appointmentsForDay;
+  let appointments = [];
+  state.days.forEach(value =>{
+    if(value.name === day) {
+      const today = value;
+      today.appointments.forEach(appt => {
+        appointments.push(state.appointments[appt])
+      })
+    }
+  })
+    
+  return appointments;
 };
 
-// Function to take in state and day return the interviewers for that day as an array of objects
-// Same basic funtionality as getAppointmentsForDay
+
 export function getInterviewersForDay(state, day) {
-  let interviewersForDay = [];
+  let interviewers= [];
 
-  if (!state.days.length) {
-    return [];
-  }
-
-  const filteredDays = state.days.filter((stateDay) => stateDay.name === day);
-
-  if (!filteredDays.length) {
-    return [];
-  }
- 
-  const interviewerArray = filteredDays[0].interviewers;
-  
-  interviewerArray.forEach(interviewer => {
-    interviewersForDay.push(state.interviewers[interviewer]);
-  });
-  
-  return interviewersForDay;
+  state.days.forEach(value =>{
+    if(value.name === day) {
+      const today = value;
+      today.interviewers.forEach(int => {
+        interviewers.push(state.interviewers[int])
+      })
+    }
+  })
+    
+  return interviewers;
 };
 
 // Function to take in state and interview and return an object with interviewer and student
