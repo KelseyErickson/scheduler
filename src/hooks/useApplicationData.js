@@ -29,14 +29,11 @@ export default function useApplicationData() {
 
   // Function to update spots remaining and return a state.days copy with the update
   const updateSpots = (appointments) => {
-    let dayIndex = 0;
     let count = 0;
+    
     // Grab index of the day
-    for (const day of state.days) {
-      if (day.name === state.day){
-        dayIndex = day.id - 1;
-      } 
-    }
+    const dayIndex = state.days.findIndex(day => day.name === state.day)
+
     // Loop through that day's appointments and count the ones without an interview booked
     for (const appointment of state.days[dayIndex].appointments) {
       if (!appointments[appointment].interview) {
