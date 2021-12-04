@@ -29,21 +29,23 @@ export default function useApplicationData() {
 
   // Function to update spots remaining and return a state.days copy with the update
   const updateSpots = (appointments) => {
-    let count = 0;
-    
+    let spots = 0;
+
     // Grab index of the day
     const dayIndex = state.days.findIndex(day => day.name === state.day)
-
+    const daysObject = state.days[dayIndex];
+    
     // Loop through that day's appointments and count the ones without an interview booked
-    for (const appointment of state.days[dayIndex].appointments) {
-      if (!appointments[appointment].interview) {
-        count++;
+    for (const appointmentId of daysObject.appointments) {
+      if (!appointments[appointmentId].interview) {
+        spots++;
       }
     }
     // Copy state and adjust the spot number with the count and return the copy
-    const stateDaysCopy = { ...state };
-    stateDaysCopy.days[dayIndex].spots = count;
-    return stateDaysCopy.days;
+    const copyDay = {...daysObject, spots}
+    const copyDays = [...state.days]
+    copyDays[dayIndex] = copyDay;
+    return copyDays;
   };
 
 
