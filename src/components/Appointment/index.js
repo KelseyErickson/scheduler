@@ -26,7 +26,6 @@ export default function Appointment(props) {
 
   //Function to save student name in interviewer when making new appointment
   function save(name, interviewer) {
-    // Check to see if inteviewer or name is entered on form, if not show error and do not save
     const interview = {
       student: name,
       interviewer,
