@@ -82,7 +82,6 @@ storiesOf("DayList", module)
   ));
 
 // InterviewListItem Data and Stories
-
 const interviewer = {
   id: 1,
   name: "Sylvia Palmer",
@@ -142,7 +141,6 @@ storiesOf("InterviewerList", module)
   ));
 
 // Stories for Appointments
-
 storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }],
