@@ -4,7 +4,6 @@ export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-
   // Function will take in a newMode and a boolean. Will set state depending on the boolean (replace)
   const transition = (newMode, replace = false) => {
     setMode(newMode);
