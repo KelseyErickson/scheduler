@@ -26,15 +26,14 @@ export default function useApplicationData() {
     });
   }, []);
 
-
   // Function to update spots remaining and return a state.days copy with the update
   const updateSpots = (appointments) => {
     let spots = 0;
 
     // Grab index of the day
-    const dayIndex = state.days.findIndex(day => day.name === state.day)
+    const dayIndex = state.days.findIndex((day) => day.name === state.day);
     const daysObject = state.days[dayIndex];
-    
+
     // Loop through that day's appointments and count the ones without an interview booked
     for (const appointmentId of daysObject.appointments) {
       if (!appointments[appointmentId].interview) {
@@ -42,12 +41,11 @@ export default function useApplicationData() {
       }
     }
     // Copy state and adjust the spot number with the count and return the copy
-    const copyDay = {...daysObject, spots}
-    const copyDays = [...state.days]
+    const copyDay = { ...daysObject, spots };
+    const copyDays = [...state.days];
     copyDays[dayIndex] = copyDay;
     return copyDays;
   };
-
 
   // Function to book interview and update db and state
   function bookInterview(id, interview) {
@@ -83,7 +81,6 @@ export default function useApplicationData() {
 
     // To increment spots with interview deleted
     const days = updateSpots(appointments);
-
 
     return axios.delete(`/api/appointments/${id}`).then(() => {
       setState({ ...state, appointments, days });
