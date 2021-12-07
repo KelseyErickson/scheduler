@@ -13,8 +13,8 @@ describe("Form", () => {
     {
       id: 1,
       name: "Sylvia Palmer",
-      avatar: "https://i.imgur.com/LpaY82x.png"
-    }
+      avatar: "https://i.imgur.com/LpaY82x.png",
+    },
   ];
 
   it("renders without student name if not provided", () => {
@@ -45,9 +45,8 @@ describe("Form", () => {
 
   it("can successfully save after trying to submit an empty student name", () => {
     const onSave = jest.fn();
-    const { getByText, getByPlaceholderText, queryByText, getByAltText } = render(
-      <Form interviewers={interviewers} onSave={onSave} />
-    );
+    const { getByText, getByPlaceholderText, queryByText, getByAltText } =
+      render(<Form interviewers={interviewers} onSave={onSave} />);
 
     fireEvent.click(getByText("Save"));
 
@@ -55,9 +54,9 @@ describe("Form", () => {
     expect(onSave).not.toHaveBeenCalled();
 
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
-      target: { value: "Lydia Miller-Jones" }
-    }); 
-    
+      target: { value: "Lydia Miller-Jones" },
+    });
+
     fireEvent.click(getByAltText("Sylvia Palmer"));
 
     fireEvent.click(getByText("Save"));
@@ -66,7 +65,6 @@ describe("Form", () => {
 
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
-
   });
 
   it("validates that an interviewer is selected", () => {
@@ -76,26 +74,23 @@ describe("Form", () => {
     );
 
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
-      target: { value: "Lydia Miller-Jones" }
-    }); 
+      target: { value: "Lydia Miller-Jones" },
+    });
 
     fireEvent.click(getByText("Save"));
 
     expect(getByText(/Please choose an interviewer/i)).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
-
   });
-
 
   it("can successfully save after trying to submit without selecting an interviewer", () => {
     const onSave = jest.fn();
-    const { getByText, getByPlaceholderText, queryByText, getByAltText } = render(
-      <Form interviewers={interviewers}  onSave={onSave}  />
-    );
+    const { getByText, getByPlaceholderText, queryByText, getByAltText } =
+      render(<Form interviewers={interviewers} onSave={onSave} />);
 
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
-      target: { value: "Lydia Miller-Jones" }
-    }); 
+      target: { value: "Lydia Miller-Jones" },
+    });
 
     fireEvent.click(getByText("Save"));
 
@@ -108,9 +103,7 @@ describe("Form", () => {
 
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
-
   });
-
 
   it("calls onCancel and resets the input field", () => {
     const onCancel = jest.fn();
@@ -126,7 +119,7 @@ describe("Form", () => {
     fireEvent.click(getByText("Save"));
 
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
-      target: { value: "Lydia Miller-Jones" }
+      target: { value: "Lydia Miller-Jones" },
     });
 
     fireEvent.click(getByText("Cancel"));
